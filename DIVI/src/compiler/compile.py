@@ -11,6 +11,6 @@ def write(INPUT):
 				memory = INPUT.split("'")
 				print(memory[1])
 			elif i == TOKENS[2]:
-				os.system('git clone https://github.com/MortyHub/DIVI-Interprater.git')
+				os.system('git clone https://github.com/MortyHub/DIVI-Interpreter')
 			elif i == TOKENS[3]:
 				exit()
