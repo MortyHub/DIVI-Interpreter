@@ -1,7 +1,10 @@
 import os
 
 TOKENS = [
-	"shell.log('", "')", "update()", "shell.stop()", "multiline()"
+	"shell.log('", "')", "update()", "shell.stop()", "multiline()", "help('"
+]
+HELP = [
+	'shell.log', 'Will print whatever into the console', 'update', 'Will update your shell to the latest version', 'shell.stop', 'Will exit the shell', 'multiline', 'Activates Multiline mode where you can input multiple commands and it will run those commands after typing end'
 ]
 MULTI = []
 
@@ -33,7 +36,13 @@ def write(INPUT):
 						Mult(MULTI)
 					else:
 						MULTI.append(inpu)
-						
+			elif i == TOKENS[5]:
+				hel = INPUT.split("'")
+				curr = 0
+				for x in HELP:
+					curr += 1
+					if x == hel[1]:
+						print(HELP[curr])					
 				
 
 
