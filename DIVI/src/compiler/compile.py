@@ -11,7 +11,7 @@ def write(INPUT):
 				memory = INPUT.split("'")
 				print(memory[1])
 			elif i == TOKENS[2]:
-				print('Will only work with git installed:\nWindows: https://gitforwindows.org\nMac: $ brew install git in Command Line\nLinux: sudo apt-get install git In Shell')
+				print('Will only work with git installed:\n\nWindows: https://gitforwindows.org\n\nMac: $ brew install git in Command Line\n\nLinux: sudo apt-get install git In Shell\n')
 				os.system('git clone https://github.com/MortyHub/DIVI-Interpreter')
 			elif i == TOKENS[3]:
 				exit()
