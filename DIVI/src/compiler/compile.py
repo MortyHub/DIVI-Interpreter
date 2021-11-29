@@ -1,11 +1,13 @@
 import os
 
 TOKENS = [
-	"shell.log('", "')", "update()", "shell.stop()", "multiline()", "help('"
+	"shell.log('", "')", "update()", "shell.stop()", "multiline()", "help('", "shell.tok('", ".setTok('"
 ]
 HELP = [
-	'shell.log', 'Will print whatever into the console', 'update', 'Will update your shell to the latest version', 'shell.stop', 'Will exit the shell', 'multiline', 'Activates Multiline mode where you can input multiple commands and it will run those commands after typing end'
+	'shell.log', 'Will print whatever into the console', 'update', 'Will update your shell to the latest version', 'shell.stop', 'Will exit the shell', 'multiline', 'Activates Multiline mode where you can input multiple commands and it will run those commands after typing end', 'shell.tok()', 'finds Token of defined shell', '.setTok()', 'Sets token of choice'
 ]
+SHELLS = ['main']
+SHELL_TOK = ['MJQPrcbjignpZdQ']
 MULTI = []
 
 def Mult(inc):
@@ -42,8 +44,22 @@ def write(INPUT):
 				for x in HELP:
 					curr += 1
 					if x == hel[1]:
-						print(HELP[curr])					
-				
+						print(HELP[curr])
+			elif i == TOKENS[6]:
+					shel = INPUT.split("'")
+					curre = 0
+					for y in SHELLS:
+						if y == shel[1]:
+							print(SHELL_TOK[curre])
+					curre += 1
+			elif i == TOKENS[7]:
+				inputy = INPUT.split("'")
+				y = inputy[0].split('.')
+				if y[0] in SHELLS:
+					setb = SHELLS.index(y[0])
+					SHELL_TOK[setb] = inputy[1]
+					
+
 
 
 def error(er):
