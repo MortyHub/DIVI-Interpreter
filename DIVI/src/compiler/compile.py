@@ -1,14 +1,16 @@
 import os
+import random
 
 TOKENS = [
-	"shell.log('", "')", "update()", "shell.stop()", "multiline()", "help('", "shell.tok('", ".setTok('"
+	"shell.log('", "')", "update()", "shell.stop()", "multiline()", "help('", "shell.tok('", ".setTok('", "shell.thru(", "shell.log("
 ]
 HELP = [
-	'shell.log', 'Will print whatever into the console', 'update', 'Will update your shell to the latest version', 'shell.stop', 'Will exit the shell', 'multiline', 'Activates Multiline mode where you can input multiple commands and it will run those commands after typing end', 'shell.tok()', 'finds Token of defined shell', '.setTok()', 'Sets token of choice'
+	'shell.log', 'Will print whatever into the console', 'update', 'Will update your shell to the latest version', 'shell.stop', 'Will exit the shell', 'multiline', 'Activates Multiline mode where you can input multiple commands and it will run those commands after typing end', 'shell.tok()', 'finds Token of defined shell', '.setTok()', 'Sets token of choice', 'shell.thru', 'random function seperated by ,'
 ]
 SHELLS = ['main']
 SHELL_TOK = ['MJQPrcbjignpZdQ']
 MULTI = []
+VARIABLES = []
 
 def Mult(inc):
 	for i in range(len(inc)):
@@ -58,12 +60,10 @@ def write(INPUT):
 				if y[0] in SHELLS:
 					setb = SHELLS.index(y[0])
 					SHELL_TOK[setb] = inputy[1]
-					
+			elif i == TOKENS[8]:
+				inpr = INPUT.split("(")
+				imp = inpr[1].split(")")
+				ike = imp[0].split(",")
+				print(random.randrange(int(ike[0]), int(ike[1])))
 
-
-
-def error(er):
-	print(colored(235, 94, 94, 'Error: ' + er))
-
-def colored(r, g, b, text):
-    return "\033[38;2;{};{};{}m{} \033[38;2;255;255;255m".format(r, g, b, text)
+	
