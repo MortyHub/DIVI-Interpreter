@@ -90,11 +90,3 @@ def write(INPUT):
 				shell = ff[0]
 			elif i == TOKENS[12]:
 				print(shell)
-
-				
-				
-				
-
-
-
-	
