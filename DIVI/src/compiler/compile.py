@@ -77,6 +77,7 @@ def write(INPUT):
 				imp = inpr[1].split(")")
 				ike = imp[0].split(",")
 				print(random.randrange(int(ike[0]), int(ike[1])))
+				
 			elif i == TOKENS[10]:
 				n = INPUT.split('shell.create(')
 				q = n[1].split(')')
@@ -85,8 +86,10 @@ def write(INPUT):
 				mooooo = jojo[1].split("'")
 				SHELLS.append(moomoo[1])
 				SHELL_TOK.append(mooooo[1])
+
 			elif i == TOKENS[11]:
 				ff = INPUT.split(".setShell()")
 				shell = ff[0]
+
 			elif i == TOKENS[12]:
 				print(shell)
