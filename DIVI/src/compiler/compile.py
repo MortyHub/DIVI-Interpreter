@@ -1,26 +1,27 @@
 import os
 import random
-
 TOKENS = [
-	"shell.log('", "')", "update()", "shell.stop()", "multiline()", "help('", "shell.tok('", ".setTok('", "shell.thru(", "shell.log(", "shell.create('"
+	"shell.log('", "')", "update()", "shell.stop()", "multiline()", "help('", "shell.tok('", ".setTok('", "shell.thru(", "shell.log(", "shell.create('", '.setShell()', "shell.current()"
 ]
 HELP = [
-	'shell.log', 'Will print whatever into the console', 'update', 'Will update your shell to the latest version', 'shell.stop', 'Will exit the shell', 'multiline', 'Activates Multiline mode where you can input multiple commands and it will run those commands after typing end', 'shell.tok()', 'finds Token of defined shell', '.setTok()', 'Sets token of choice', 'shell.thru', 'random function seperated by ,', 'shell.create', 'creates a Virtual shell, good for running virtual machines', 'shell', 'a virtual runtime ran by the software, multiple can be ran at once'
+	'shell.log', 'Will print whatever into the console', 'update', 'Will update your shell to the latest version', 'shell.stop', 'Will exit the shell', 'multiline', 'Activates Multiline mode where you can input multiple commands and it will run those commands after typing end', 'shell.tok()', 'finds Token of defined shell', '.setTok()', 'Sets token of choice', 'shell.thru', 'random function seperated by ,', 'shell.create', 'creates a Virtual shell, good for running virtual machines', 'shell', 'a virtual runtime ran by the software, multiple can be ran at once', 'shell.current', 'Shows current shell'
 ]
+
 LOWERCASE = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 UPPERCASE = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
-
 SHELLS = ['main']
 SHELL_TOK = ['MJQPrcbjignpZdQ']
+global CURRENTSH
 MULTI = []
 VARIABLES = []
-
+shell = 'main'
 def Mult(inc):
 	for i in range(len(inc)):
 		write(inc[i])
 
 
 def write(INPUT):
+	global shell
 	for i in TOKENS:
 		if i in INPUT:
 
@@ -84,7 +85,16 @@ def write(INPUT):
 				mooooo = jojo[1].split("'")
 				SHELLS.append(moomoo[1])
 				SHELL_TOK.append(mooooo[1])
-			
+			elif i == TOKENS[11]:
+				ff = INPUT.split(".setShell()")
+				shell = ff[0]
+			elif i == TOKENS[12]:
+				print(shell)
+
+				
+				
+				
+
 
 
 	
