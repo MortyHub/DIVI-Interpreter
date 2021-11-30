@@ -1,10 +1,10 @@
 import os
 import random
 TOKENS = [
-	"shell.log('", "')", "update()", "shell.stop()", "multiline()", "help('", "shell.tok('", ".setTok('", "shell.thru(", "shell.log(", "shell.create('", '.setShell()', "shell.current()"
+	"shell.log('", "')", "update()", "shell.stop()", "multiline()", "help('", "shell.tok('", ".setTok('", "shell.thru(", "shell.log(", "shell.create('", '.setShell()', "shell.current()", "var.create('"
 ]
 HELP = [
-	'shell.log', 'Will print whatever into the console', 'update', 'Will update your shell to the latest version', 'shell.stop', 'Will exit the shell', 'multiline', 'Activates Multiline mode where you can input multiple commands and it will run those commands after typing end', 'shell.tok()', 'finds Token of defined shell', '.setTok()', 'Sets token of choice', 'shell.thru', 'random function seperated by ,', 'shell.create', 'creates a Virtual shell, good for running virtual machines', 'shell', 'a virtual runtime ran by the software, multiple can be ran at once', 'shell.current', 'Shows current shell'
+	'shell.log', 'Will print whatever into the console', 'update', 'Will update your shell to the latest version', 'shell.stop', 'Will exit the shell', 'multiline', 'Activates Multiline mode where you can input multiple commands and it will run those commands after typing end', 'shell.tok()', 'finds Token of defined shell', '.setTok()', 'Sets token of choice', 'shell.thru', 'random function seperated by ,', 'shell.create', 'creates a Virtual shell, good for running virtual machines', 'shell', 'a virtual runtime ran by the software, multiple can be ran at once', 'shell.current', 'Shows current shell', 'var.create', 'This creates a variable '
 ]
 
 LOWERCASE = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
@@ -14,6 +14,7 @@ SHELL_TOK = ['MJQPrcbjignpZdQ']
 global CURRENTSH
 MULTI = []
 VARIABLES = []
+VARIABLE_VAL = []
 shell = 'main'
 def Mult(inc):
 	for i in range(len(inc)):
@@ -77,7 +78,7 @@ def write(INPUT):
 				imp = inpr[1].split(")")
 				ike = imp[0].split(",")
 				print(random.randrange(int(ike[0]), int(ike[1])))
-				
+
 			elif i == TOKENS[10]:
 				n = INPUT.split('shell.create(')
 				q = n[1].split(')')
@@ -93,3 +94,11 @@ def write(INPUT):
 
 			elif i == TOKENS[12]:
 				print(shell)
+
+			elif i == TOKENS[13]:
+				jomo = INPUT.split("(")
+				INKE = jomo[1].split(")")
+				IPEK = INKE[0].split("'")
+				ICT = IPEK[2].split(', ')
+				VARIABLES.append(IPEK[1])
+				VARIABLE_VAL.append(ICT[1])
