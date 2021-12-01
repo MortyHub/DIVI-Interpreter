@@ -1,16 +1,18 @@
 import os
 import random
 TOKENS = [
-	"shell.log('", "')", "update()", "shell.stop()", "multiline()", "help('", "shell.tok('", ".setTok('", "shell.thru(", "shell.log(", "shell.create('", '.setShell()', "shell.current()", "var.create('"
+	"shell.log('", "')", "update()", "shell.stop()", "multiline()", "help('", "shell.tok('", ".setTok('", "shell.thru(", "shell.log(", "shell.create('", '.setShell()', "shell.current()", "var.create('", ".private()", ".public()", "shell.publics()", "shell.privates()"
 ]
 HELP = [
-	'shell.log', 'Will print whatever into the console', 'update', 'Will update your shell to the latest version', 'shell.stop', 'Will exit the shell', 'multiline', 'Activates Multiline mode where you can input multiple commands and it will run those commands after typing end', 'shell.tok()', 'finds Token of defined shell', '.setTok()', 'Sets token of choice', 'shell.thru', 'random function seperated by ,', 'shell.create', 'creates a Virtual shell, good for running virtual machines', 'shell', 'a virtual runtime ran by the software, multiple can be ran at once', 'shell.current', 'Shows current shell', 'var.create', 'This creates a variable '
+	'shell.log', 'Will print whatever into the console', 'update', 'Will update your shell to the latest version', 'shell.stop', 'Will exit the shell', 'multiline', 'Activates Multiline mode where you can input multiple commands and it will run those commands after typing end', 'shell.tok()', 'finds Token of defined shell', '.setTok()', 'Sets token of choice', 'shell.thru', 'random function seperated by ,', 'shell.create', 'creates a Virtual shell, good for running virtual machines', 'shell', 'a virtual runtime ran by the software, multiple can be ran at once', 'shell.current', 'Shows current shell', 'var.create', 'This creates a variable ', '.public', 'This sets a shell to be public so it can be accessed with URL or name', '.private', 'This sets a shell to be public so it can only be accessed with the token'
 ]
 
 LOWERCASE = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 UPPERCASE = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
 SHELLS = ['main']
 SHELL_TOK = ['MJQPrcbjignpZdQ']
+PUBLIC_SHELLS = []
+PRIVATE_SHELLS = ['main']
 global CURRENTSH
 MULTI = []
 VARIABLES = []
@@ -102,3 +104,21 @@ def write(INPUT):
 				ICT = IPEK[2].split(', ')
 				VARIABLES.append(IPEK[1])
 				VARIABLE_VAL.append(ICT[1])
+
+			elif i == TOKENS[14]:
+				yml = INPUT.split(".private()")
+				findy = PUBLIC_SHELLS.index(yml[0])
+				del PUBLIC_SHELLS[findy]
+				PRIVATE_SHELLS.append(yml[0])
+
+			elif i == TOKENS[15]:
+				xml = INPUT.split(".public()")
+				moocoo = PRIVATE_SHELLS.index(xml[0])
+				del PRIVATE_SHELLS[moocoo]
+				PUBLIC_SHELLS.append(xml[0])
+			
+			elif i == TOKENS[16]:
+				print(PUBLIC_SHELLS)
+			
+			elif i == TOKENS[17]:
+				print(PRIVATE_SHELLS)
