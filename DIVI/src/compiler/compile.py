@@ -1,10 +1,11 @@
 import os
 import random
+
 TOKENS = [
-	"shell.log('", "')", "update()", "shell.stop()", "multiline()", "help('", "shell.tok('", ".setTok('", "shell.thru(", "shell.log(", "shell.create('", '.setShell()', "shell.current()", "var.create('", ".private()", ".public()", "shell.publics()", "shell.privates()"
+	"shell.log('", "')", "update()", "shell.stop()", "multiline()", "help('", "shell.tok('", ".setTok('", "shell.thru(", "shell.log(", "shell.create('", '.setShell()', "shell.current()", "var.create('", ".private()", ".public()", "shell.publics()", "shell.privates()", "func", "({", "function('"
 ]
 HELP = [
-	'shell.log', 'Will print whatever into the console', 'update', 'Will update your shell to the latest version', 'shell.stop', 'Will exit the shell', 'multiline', 'Activates Multiline mode where you can input multiple commands and it will run those commands after typing end', 'shell.tok()', 'finds Token of defined shell', '.setTok()', 'Sets token of choice', 'shell.thru', 'random function seperated by ,', 'shell.create', 'creates a Virtual shell, good for running virtual machines', 'shell', 'a virtual runtime ran by the software, multiple can be ran at once', 'shell.current', 'Shows current shell', 'var.create', 'This creates a variable ', '.public', 'This sets a shell to be public so it can be accessed with URL or name', '.private', 'This sets a shell to be public so it can only be accessed with the token'
+	'shell.log', 'Will print whatever into the console', 'update', 'Will update your shell to the latest version', 'shell.stop', 'Will exit the shell', 'multiline', 'Activates Multiline mode where you can input multiple commands and it will run those commands after typing end', 'shell.tok()', 'finds Token of defined shell', '.setTok()', 'Sets token of choice', 'shell.thru', 'random function seperated by ,', 'shell.create', 'creates a Virtual shell, good for running virtual machines', 'shell', 'a virtual runtime ran by the software, multiple can be ran at once', 'shell.current', 'Shows current shell', 'var.create', 'This creates a variable ', '.public', 'This sets a shell to be public so it can be accessed with URL or name', '.private', 'This sets a shell to be public so it can only be accessed with the token', 'func', 'a function'
 ]
 
 LOWERCASE = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
@@ -13,14 +14,34 @@ SHELLS = ['main']
 SHELL_TOK = ['MJQPrcbjignpZdQ']
 PUBLIC_SHELLS = []
 PRIVATE_SHELLS = ['main']
+USER_FUNCTIONS = ['run']
 global CURRENTSH
 MULTI = []
 VARIABLES = []
 VARIABLE_VAL = []
+FUNCTION_CMD = []
 shell = 'main'
+
+
 def Mult(inc):
 	for i in range(len(inc)):
-		write(inc[i])
+		if inc == []:
+			break
+		if('func' in inc[i]):
+			OLPI = inc[i].split('func ')
+			OMNIM = OLPI[0].split('(')
+			if OMNIM[0] in USER_FUNCTIONS:
+				for i in range(len(inc)):
+					if inc[i] == '})':
+						FUNCTION_CMD.remove(FUNCTION_CMD[0])
+						goofy = inc.index("func " + OMNIM[0] + '({')
+						goofy1 = inc.index("})") + 1
+						inc[goofy:goofy1] = []
+						Mult(FUNCTION_CMD)
+					else:
+						FUNCTION_CMD.append(inc[i])
+		else:	
+			write(inc[i])
 
 
 def write(INPUT):
@@ -40,6 +61,7 @@ def write(INPUT):
 				exit()
 
 			elif i == TOKENS[4]:
+				MULTI = []
 				print("Type: end, to end the the script")
 				line = 1
 				y = True
@@ -122,3 +144,12 @@ def write(INPUT):
 			
 			elif i == TOKENS[17]:
 				print(PRIVATE_SHELLS)
+
+			elif i == TOKENS[18]:
+				funcName = INPUT.split("func ")
+				FuncName1 = funcName[1].split("(")
+				print("Function: '" + FuncName1[0] + "' Can only be used in multiline scripts")
+			
+			elif i == TOKENS[20]:
+				GOFYU = INPUT.split("'")
+				USER_FUNCTIONS.append(GOFYU[1])
