@@ -1,11 +1,13 @@
 import os
 import random
+from DIVI.src.compiler.renderer import startHTML
 
 TOKENS = [
-	"shell.log('", "')", "update()", "shell.stop()", "multiline()", "help('", "shell.tok('", ".setTok('", "shell.thru(", "shell.log(", "shell.create('", '.setShell()', "shell.current()", "var.create('", ".private()", ".public()", "shell.publics()", "shell.privates()", "func", "({", "function('"
+	"shell.log('", "')", "update()", "shell.stop()", "multiline()", "help('", "shell.tok('", ".setTok('", "shell.thru(", "shell.log(", "shell.create('", '.setShell()', "shell.current()", "var.create('", ".private()", ".public()", "shell.publics()", "shell.privates()", "func", "({", "function('", "renderHTML('"
 ]
+
 HELP = [
-	'shell.log', 'Will print whatever into the console', 'update', 'Will update your shell to the latest version', 'shell.stop', 'Will exit the shell', 'multiline', 'Activates Multiline mode where you can input multiple commands and it will run those commands after typing end', 'shell.tok()', 'finds Token of defined shell', '.setTok()', 'Sets token of choice', 'shell.thru', 'random function seperated by ,', 'shell.create', 'creates a Virtual shell, good for running virtual machines', 'shell', 'a virtual runtime ran by the software, multiple can be ran at once', 'shell.current', 'Shows current shell', 'var.create', 'This creates a variable ', '.public', 'This sets a shell to be public so it can be accessed with URL or name', '.private', 'This sets a shell to be public so it can only be accessed with the token', 'func', 'a function'
+	'shell.log', 'Will print whatever into the console', 'update', 'Will update your shell to the latest version', 'shell.stop', 'Will exit the shell', 'multiline', 'Activates Multiline mode where you can input multiple commands and it will run those commands after typing end', 'shell.tok()', 'finds Token of defined shell', '.setTok()', 'Sets token of choice', 'shell.thru', 'random function seperated by ,', 'shell.create', 'creates a Virtual shell, good for running virtual machines', 'shell', 'a virtual runtime ran by the software, multiple can be ran at once', 'shell.current', 'Shows current shell', 'var.create', 'This creates a variable ', '.public', 'This sets a shell to be public so it can be accessed with URL or name', '.private', 'This sets a shell to be public so it can only be accessed with the token', 'func', 'a function', 'renderHTML', 'Arguments will be rendered into a gui on screen, must be HTML'
 ]
 
 LOWERCASE = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
@@ -153,3 +155,7 @@ def write(INPUT):
 			elif i == TOKENS[20]:
 				GOFYU = INPUT.split("'")
 				USER_FUNCTIONS.append(GOFYU[1])
+			
+			elif i == TOKENS[21]:
+				HTMLM = INPUT.split("'")
+				startHTML('self', HTMLM[1])
