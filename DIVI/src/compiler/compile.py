@@ -2,6 +2,7 @@ import os
 import random
 from DIVI.src.compiler.renderer import startHTML
 import codecs
+import time
 
 TOKENS = [
 	"shell.log('", "')", "update()", "shell.stop()", "multiline()", "help('", "shell.tok('", ".setTok('", "shell.thru(", "shell.log(", "shell.create('", '.setShell()', "shell.current()", "var.create('", ".private()", ".public()", "shell.publics()", "shell.privates()", "func", "({", "function('", "renderHTML('", "renderImage('", "setDefault('"
@@ -24,8 +25,12 @@ VARIABLES = []
 VARIABLE_VAL = []
 FUNCTION_CMD = []
 shell = 'main'
+DEFAULT = []
 
-default = codecs.open("default.txt", "r")
+with open("default.txt", "r") as a_file:
+  for line in a_file:
+    stripped_line = line.strip()
+    DEFAULT.append(stripped_line)
 
 def Mult(inc):
 	for i in range(len(inc)):
@@ -162,4 +167,5 @@ def write(INPUT):
 				startHTML('self', HTMLM[1])
 			
 
-write(default.read())
+for i in range(len(DEFAULT)):
+	write(DEFAULT[i])
