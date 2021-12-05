@@ -45,7 +45,6 @@ def Mult(inc):
 		else:	
 			write(inc[i])
 
-
 def write(INPUT):
 	global shell
 	for i in TOKENS:
