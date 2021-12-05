@@ -1,9 +1,10 @@
 import os
 import random
 from DIVI.src.compiler.renderer import startHTML
+import codecs
 
 TOKENS = [
-	"shell.log('", "')", "update()", "shell.stop()", "multiline()", "help('", "shell.tok('", ".setTok('", "shell.thru(", "shell.log(", "shell.create('", '.setShell()', "shell.current()", "var.create('", ".private()", ".public()", "shell.publics()", "shell.privates()", "func", "({", "function('", "renderHTML('"
+	"shell.log('", "')", "update()", "shell.stop()", "multiline()", "help('", "shell.tok('", ".setTok('", "shell.thru(", "shell.log(", "shell.create('", '.setShell()', "shell.current()", "var.create('", ".private()", ".public()", "shell.publics()", "shell.privates()", "func", "({", "function('", "renderHTML('", "renderImage('", "setDefault('"
 ]
 
 HELP = [
@@ -24,6 +25,7 @@ VARIABLE_VAL = []
 FUNCTION_CMD = []
 shell = 'main'
 
+default = codecs.open("default.txt", "r")
 
 def Mult(inc):
 	for i in range(len(inc)):
@@ -158,3 +160,6 @@ def write(INPUT):
 			elif i == TOKENS[21]:
 				HTMLM = INPUT.split("'")
 				startHTML('self', HTMLM[1])
+			
+
+write(default.read())

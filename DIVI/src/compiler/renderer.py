@@ -9,3 +9,6 @@ def startHTML(self, html, strip=True):
 	html_label.fit_height()
 	root.mainloop()
 
+
+
+
