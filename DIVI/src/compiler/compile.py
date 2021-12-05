@@ -5,7 +5,7 @@ import codecs
 import time
 
 TOKENS = [
-	"shell.log('", "')", "update()", "shell.stop()", "multiline()", "help('", "shell.tok('", ".setTok('", "shell.thru(", "shell.log(", "shell.create('", '.setShell()', "shell.current()", "var.create('", ".private()", ".public()", "shell.publics()", "shell.privates()", "func", "({", "function('", "renderHTML('", "renderImage('", "setDefault('"
+	"shell.log('", "')", "update()", "shell.stop()", "multiline()", "help('", "shell.tok('", ".setTok('", "shell.thru(", "shell.log(", "shell.create('", '.setShell()', "shell.current()", "var.create('", ".private()", ".public()", "shell.publics()", "shell.privates()", "func", "({", "function('", "renderHTML(\"", "renderImage('", "setDefault('"
 ]
 
 HELP = [
@@ -163,9 +163,10 @@ def write(INPUT):
 				USER_FUNCTIONS.append(GOFYU[1])
 			
 			elif i == TOKENS[21]:
-				HTMLM = INPUT.split("'")
+				HTMLM = INPUT.split("\"")
 				startHTML('self', HTMLM[1])
 			
 
 for i in range(len(DEFAULT)):
 	write(DEFAULT[i])
+#write(default.read())
