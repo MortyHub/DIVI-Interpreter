@@ -163,8 +163,12 @@ def write(INPUT):
 				USER_FUNCTIONS.append(GOFYU[1])
 			
 			elif i == TOKENS[21]:
-				HTMLM = INPUT.split("\"")
-				startHTML('self', HTMLM[1])
+				HTMLM = INPUT.split(",")
+				ARC = HTMLM[1].split("\"")
+				LMOD = HTMLM[0].split("\"")
+				print(LMOD[1])
+				print(ARC[1])
+				startHTML('self', LMOD[1], ARC[1])
 			
 
 for i in range(len(DEFAULT)):
