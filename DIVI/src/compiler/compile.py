@@ -5,7 +5,7 @@ import codecs
 import time
 
 TOKENS = [
-	"shell.log('", "')", "update()", "shell.stop()", "multiline()", "help('", "shell.tok('", ".setTok('", "shell.thru(", "shell.log(", "shell.create('", '.setShell()', "shell.current()", "var.create('", ".private()", ".public()", "shell.publics()", "shell.privates()", "func", "({", "function('", "renderHTML(\"", "renderImage('", "setDefault('", "shell.open('"
+	"shell.log('", "')", "update()", "shell.stop()", "multiline()", "help('", "shell.tok('", ".setTok('", "shell.thru(", "shell.log(", "shell.create('", '.setShell()', "shell.current()", "var.create('", ".private()", ".public()", "shell.publics()", "shell.privates()", "func", "({", "function('", "renderHTML(\"", "renderImage('", "setDefault('", "shell.open('", "Create.Object('", ".setSprite('"
 ]
 
 HELP = [
@@ -27,6 +27,8 @@ FUNCTION_CMD = []
 shell = 'main'
 DEFAULT = []
 OPENED = []
+OBJECTS = []
+OBJECT_SPRITE = ['', '', '', '','', '', '', '','', '', '', '','', '', '', '','', '', '', '','', '', '', '','', '', '', '','', '', '', '','', '', '', '','', '', '', '','', '', '', '','', '', '', '','', '', '', '','', '', '', '','', '', '', '','', '', '', '','', '', '', '','', '', '', '','', '', '', '','', '', '', '','', '', '', '','', '', '', '','', '', '', '','', '', '', '','', '', '', '','', '', '', '','', '', '', '','', '', '', '','', '', '', '','', '', '', '','', '', '', '','', '', '', '','', '', '', '','', '', '', '','', '', '', '','', '', '', '','', '', '', '','', '', '', '','', '', '', '','', '', '', '','', '', '', '',]
 
 with open("default.txt", "r") as a_file:
   for line in a_file:
@@ -179,6 +181,16 @@ def write(INPUT):
 						OPENED.append(minifis)
 					Mult(OPENED)
 
+			elif i == TOKENS[25]:
+				OBB = INPUT.split("'")
+				OBJECTS.append(OBB[1])
+
+
+			elif i == TOKENS[26]:
+				MOMOA = INPUT.split(".")
+				KAYMAY = MOMOA[1].split("'")
+				OBJECT_SPRITE[OBJECTS.index(MOMOA[0])] = KAYMAY[1]
+				
 
 
 for i in range(len(DEFAULT)):
