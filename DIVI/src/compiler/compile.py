@@ -5,11 +5,11 @@ import codecs
 import time
 
 TOKENS = [
-	"shell.log('", "')", "update()", "shell.stop()", "multiline()", "help('", "shell.tok('", ".setTok('", "shell.thru(", "shell.log(", "shell.create('", '.setShell()', "shell.current()", "var.create('", ".private()", ".public()", "shell.publics()", "shell.privates()", "func", "({", "function('", "renderHTML(\"", "renderImage('", "setDefault('"
+	"shell.log('", "')", "update()", "shell.stop()", "multiline()", "help('", "shell.tok('", ".setTok('", "shell.thru(", "shell.log(", "shell.create('", '.setShell()', "shell.current()", "var.create('", ".private()", ".public()", "shell.publics()", "shell.privates()", "func", "({", "function('", "renderHTML(\"", "renderImage('", "setDefault('", "shell.open('"
 ]
 
 HELP = [
-	'shell.log', 'Will print whatever into the console', 'update', 'Will update your shell to the latest version', 'shell.stop', 'Will exit the shell', 'multiline', 'Activates Multiline mode where you can input multiple commands and it will run those commands after typing end', 'shell.tok()', 'finds Token of defined shell', '.setTok()', 'Sets token of choice', 'shell.thru', 'random function seperated by ,', 'shell.create', 'creates a Virtual shell, good for running virtual machines', 'shell', 'a virtual runtime ran by the software, multiple can be ran at once', 'shell.current', 'Shows current shell', 'var.create', 'This creates a variable ', '.public', 'This sets a shell to be public so it can be accessed with URL or name', '.private', 'This sets a shell to be public so it can only be accessed with the token', 'func', 'a function', 'renderHTML', 'Arguments will be rendered into a gui on screen, must be HTML'
+	'shell.log', 'Will print whatever into the console', 'update', 'Will update your shell to the latest version', 'shell.stop', 'Will exit the shell', 'multiline', 'Activates Multiline mode where you can input multiple commands and it will run those commands after typing end', 'shell.tok()', 'finds Token of defined shell', '.setTok()', 'Sets token of choice', 'shell.thru', 'random function seperated by ,', 'shell.create', 'creates a Virtual shell, good for running virtual machines', 'shell', 'a virtual runtime ran by the software, multiple can be ran at once', 'shell.current', 'Shows current shell', 'var.create', 'This creates a variable ', '.public', 'This sets a shell to be public so it can be accessed with URL or name', '.private', 'This sets a shell to be public so it can only be accessed with the token', 'func', 'a function', 'renderHTML', 'Arguments will be rendered into a gui on screen, must be HTML', 'shell.open', 'This will open a divi script file of the directory of your choosings.'
 ]
 
 LOWERCASE = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
@@ -26,6 +26,7 @@ VARIABLE_VAL = []
 FUNCTION_CMD = []
 shell = 'main'
 DEFAULT = []
+OPENED = []
 
 with open("default.txt", "r") as a_file:
   for line in a_file:
@@ -170,6 +171,15 @@ def write(INPUT):
 				print(ARC[1])
 				startHTML('self', LMOD[1], ARC[1])
 			
+			elif i == TOKENS[24]:
+				MOTIFIS = INPUT.split("'")
+				with open(MOTIFIS[1], "r") as script:
+					for i in script:
+						minifis = i.strip()
+						OPENED.append(minifis)
+					Mult(OPENED)
+
+
 
 for i in range(len(DEFAULT)):
 	write(DEFAULT[i])
