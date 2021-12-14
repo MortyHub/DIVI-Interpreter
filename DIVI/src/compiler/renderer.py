@@ -8,6 +8,9 @@ def startHTML(self, html, title, strip=True):
 	html_label.pack(fill="both", expand=True)
 	html_label.fit_height()
 	root.mainloop()
+	
+def render(self, img, strip=True):
+	print(img)
 
 
 
