@@ -11,7 +11,7 @@ TOKENS = [
     ".public()", "shell.publics()", "shell.privates()", "func", "({",
     "function('", "renderHTML(\"", "renderImage('", "setDefault('",
     "shell.open('", "Create.Object('", ".setSprite('", "display('",
-    "ShellDat('", ".setDat('"
+    "ShellDat('", ".setDat('", "shell.site('"
 ]
 
 HELP = [
@@ -51,6 +51,7 @@ USER_FUNCTIONS = ['run']
 global CURRENTSH
 MULTI = []
 VARIABLES = []
+SHELLOPEN = []
 VARIABLE_VAL = [
     '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '',
     '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '',
@@ -197,6 +198,7 @@ def write(INPUT):
                 mooooo = jojo[1].split("'")
                 SHELLS.append(moomoo[1])
                 SHELL_TOK.append(mooooo[1])
+                open('DIVI/src/compiler/Shells/' + moomoo[1] + '.divi', "a+")
 
             elif i == TOKENS[11]:
                 ff = INPUT.split(".setShell()")
@@ -279,6 +281,19 @@ def write(INPUT):
                 SUGMA = INPUT.split(".")
                 MOCOMO = SUGMA[1].split("'")
                 SHELLDATA[SHELLS.index(SUGMA[0])] = MOCOMO[1]
+
+            elif i == TOKENS[30]:
+                BALLCM = INPUT.split("'")
+                with open("DIVI/src/compiler/Shells/" + BALLCM[1] + '.divi', "r") as a_file:
+                    for i in SHELLOPEN:
+                        SHELLOPEN[i] = ''
+                    for line in a_file:
+                        stripped = line.strip()
+                        SHELLOPEN.append(stripped)
+                    Mult(SHELLOPEN)
+
+				
+                
 
 
 for i in range(len(DEFAULT)):
