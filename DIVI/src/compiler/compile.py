@@ -32,7 +32,7 @@ HELP = [
     'func', 'a function', 'renderHTML',
     'Arguments will be rendered into a gui on screen, must be HTML',
     'shell.open',
-    'This will open a divi script file of the directory of your choosings.'
+    'This will open a divi script file of the directory of your choosings.', 'Create.Object', 'creates objects', '.setsprite', 'sets sprite of object', 'ShellDat', 'Displays the data of a shell', '.setDat', 'Sets data of shells'
 ]
 
 LOWERCASE = [
