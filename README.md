@@ -20,4 +20,4 @@ This requires the latest version of python and git.
 Contributing is not going to happen until this project becomes more major.
 
 # Documentation
-['Documentation']('https://github.com/MortyHub/DIVI-Interpreter/wiki/Documentation')
+[Documentation](https://github.com/MortyHub/DIVI-Interpreter/wiki/Documentation)
