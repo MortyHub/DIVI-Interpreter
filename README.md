@@ -15,6 +15,7 @@ This requires the latest version of python and git.
 - Private and public shells
 - Variable creation
 - Help menu
+- Object Creation
 
 # Contributing
 Contributing is not going to happen until this project becomes more major.
