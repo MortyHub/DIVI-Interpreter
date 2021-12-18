@@ -298,4 +298,3 @@ def write(INPUT):
 
 for i in range(len(DEFAULT)):
     write(DEFAULT[i])
-#write(default.read())
