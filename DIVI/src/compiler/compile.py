@@ -11,7 +11,7 @@ TOKENS = [
     ".public()", "shell.publics()", "shell.privates()", "func", "({",
     "function('", "renderHTML(\"", "renderImage('", "setDefault('",
     "shell.open('", "Create.Object('", ".setSprite('", "display('",
-    "ShellDat('", ".setDat('", "shell.site('"
+    "ShellDat('", ".setDat('", "shell.site('", "if(", "=", ">", "<", "-", "+", "/",".request('"
 ]
 
 HELP = [
@@ -284,17 +284,46 @@ def write(INPUT):
 
             elif i == TOKENS[30]:
                 BALLCM = INPUT.split("'")
-                with open("DIVI/src/compiler/Shells/" + BALLCM[1] + '.divi', "r") as a_file:
-                    for i in SHELLOPEN:
-                        SHELLOPEN[i] = ''
-                    for line in a_file:
-                        stripped = line.strip()
-                        SHELLOPEN.append(stripped)
+                if BALLCM[1] not in PUBLIC_SHELLS:
+                    print('This shell is private')
+                else:
+                    with open("DIVI/src/compiler/Shells/" + BALLCM[1] + '.divi', "r") as a_file:
+                        for i in SHELLOPEN:
+                            SHELLOPEN[i] = ''
+                        for line in a_file:
+                            stripped = line.strip()
+                            SHELLOPEN.append(stripped)
                     Mult(SHELLOPEN)
 
+            elif i == TOKENS[36]:
+                addition = INPUT.split('+')
+                for i in range(2):
+                    addition[i].replace(" ", "")	
+                print(int(addition[0]) + int(addition[1])) 
+			
+            elif i == TOKENS[35]:
+                subtractions = INPUT.split('-')
+                for i in range(2):
+                    subtractions[i].replace(" ", "")
+                print(int(subtractions[0]) - int(subtractions[1]))
+			
+            elif i == TOKENS[37]:
+                division = INPUT.split("/")
+                for i in range(2):
+                   division[i].replace(" ", "")
+                print(int(division[0])/int(division[1]))
+			
+            elif i == TOKENS[38]:
+                request = INPUT.split(".request('")
+                req = request[1].split("')")
+                if req[0] == 'script':
+                    with open('DIVI/src/compiler/Shells/' + request[0] + '.divi') as r:
+                        for p in r:
+                            stripped = p.strip()
+                            print(stripped)
+                if req[0] == 'token':
+                    print(SHELL_TOK[SHELLS.index(request[0])])
 				
-                
-
 
 for i in range(len(DEFAULT)):
     write(DEFAULT[i])
