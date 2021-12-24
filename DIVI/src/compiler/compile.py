@@ -199,6 +199,7 @@ def write(INPUT):
                 SHELLS.append(moomoo[1])
                 SHELL_TOK.append(mooooo[1])
                 open('DIVI/src/compiler/Shells/' + moomoo[1] + '.divi', "a+")
+                PRIVATE_SHELLS.append(moomoo[1])
 
             elif i == TOKENS[11]:
                 ff = INPUT.split(".setShell()")
