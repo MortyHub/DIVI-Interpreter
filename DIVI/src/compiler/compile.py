@@ -142,6 +142,71 @@ def Mult(inc):
                 new = inc
                 Mult(new)
                 break
+				
+            if '>' in cals[0]:
+                use = cals[0].split('>')  
+                first = VARIABLE_VAL[VARIABLES.index(use[0])]
+                second = VARIABLE_VAL[VARIABLES.index(use[1])]
+                if first > second:
+                    needed = inc[inc.index('if ' + str(smool[1])):inc.index(';')]
+                    del needed[0]
+                    Mult(needed)
+                inc[inc.index('if ' + str(smool[1])):inc.index(';')] = ['']
+                new = inc
+                Mult(new)
+                break
+
+            if '<' in cals[0]:
+                use = cals[0].split('<')  
+                first = VARIABLE_VAL[VARIABLES.index(use[0])]
+                second = VARIABLE_VAL[VARIABLES.index(use[1])]
+                if first < second:
+                    needed = inc[inc.index('if ' + str(smool[1])):inc.index(';')]
+                    del needed[0]
+                    Mult(needed)
+                inc[inc.index('if ' + str(smool[1])):inc.index(';')] = ['']
+                new = inc
+                Mult(new)
+                break
+
+            if '!=' in cals[0]:
+                use = cals[0].split('!=')  
+                first = VARIABLE_VAL[VARIABLES.index(use[0])]
+                second = VARIABLE_VAL[VARIABLES.index(use[1])]
+                if first != second:
+                    needed = inc[inc.index('if ' + str(smool[1])):inc.index(';')]
+                    del needed[0]
+                    Mult(needed)
+                inc[inc.index('if ' + str(smool[1])):inc.index(';')] = ['']
+                new = inc
+                Mult(new)
+                break
+
+            if '>=' in cals[0]:
+                use = cals[0].split('==')  
+                first = VARIABLE_VAL[VARIABLES.index(use[0])]
+                second = VARIABLE_VAL[VARIABLES.index(use[1])]
+                if first >= second:
+                    needed = inc[inc.index('if ' + str(smool[1])):inc.index(';')]
+                    del needed[0]
+                    Mult(needed)
+                inc[inc.index('if ' + str(smool[1])):inc.index(';')] = ['']
+                new = inc
+                Mult(new)
+                break
+
+            if '<=' in cals[0]:
+                use = cals[0].split('<=')  
+                first = VARIABLE_VAL[VARIABLES.index(use[0])]
+                second = VARIABLE_VAL[VARIABLES.index(use[1])]
+                if first <= second:
+                    needed = inc[inc.index('if ' + str(smool[1])):inc.index(';')]
+                    del needed[0]
+                    Mult(needed)
+                inc[inc.index('if ' + str(smool[1])):inc.index(';')] = ['']
+                new = inc
+                Mult(new)
+                break
 
 					
         else:
