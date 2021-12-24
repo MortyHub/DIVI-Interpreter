@@ -1,0 +1,2 @@
+var.create('sus', 1)
+var.create('moo', 2)

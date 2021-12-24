@@ -11,7 +11,7 @@ TOKENS = [
     ".public()", "shell.publics()", "shell.privates()", "func", "({",
     "function('", "renderHTML(\"", "renderImage('", "setDefault('",
     "shell.open('", "Create.Object('", ".setSprite('", "display('",
-    "ShellDat('", ".setDat('", "shell.site('", "if(", "=", ">", "<", "-", "+", "/",".request('"
+    "ShellDat('", ".setDat('", "shell.site('", "if(", "=", ">", "<", "-", "+", "/",".request('", "log('"
 ]
 
 HELP = [
@@ -100,6 +100,7 @@ OBJECT_SPRITE = [
     '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '',
     '', '', '', '', '', '', '', '', '', '', '', '', ''
 ]
+If_Data = []
 
 with open("default.txt", "r") as a_file:
     for line in a_file:
@@ -111,7 +112,7 @@ def Mult(inc):
     for i in range(len(inc)):
         if inc == []:
             break
-        if ('func' in inc[i]):
+        if 'func' in inc[i]:
             OLPI = inc[i].split('func ')
             OMNIM = OLPI[0].split('(')
             if OMNIM[0] in USER_FUNCTIONS:
@@ -124,6 +125,25 @@ def Mult(inc):
                         Mult(FUNCTION_CMD)
                     else:
                         FUNCTION_CMD.append(inc[i])
+                write(FUNCTION_CMD)
+
+        elif 'if ' in inc[i]:
+            smool = inc[i].split("if ")
+            cals = smool[1].split(":")
+            if '==' in cals[0]:
+                use = cals[0].split('==')  
+                first = VARIABLE_VAL[VARIABLES.index(use[0])]
+                second = VARIABLE_VAL[VARIABLES.index(use[1])]
+                if first == second:
+                    needed = inc[inc.index('if ' + str(smool[1])):inc.index(';')]
+                    del needed[0]
+                    Mult(needed)
+                inc[inc.index('if ' + str(smool[1])):inc.index(';')] = ['']
+                new = inc
+                Mult(new)
+                break
+
+					
         else:
             write(inc[i])
 
@@ -214,7 +234,7 @@ def write(INPUT):
                 IPEK = INKE[0].split("'")
                 ICT = IPEK[2].split(', ')
                 VARIABLES.append(IPEK[1])
-                VARIABLE_VAL.append(ICT[1])
+                VARIABLE_VAL[VARIABLES.index(IPEK[1])] = ICT[1]
 
             elif i == TOKENS[14]:
                 yml = INPUT.split(".private()")
@@ -325,6 +345,7 @@ def write(INPUT):
                 if req[0] == 'token':
                     print(SHELL_TOK[SHELLS.index(request[0])])
 				
+			
 
 for i in range(len(DEFAULT)):
     write(DEFAULT[i])
