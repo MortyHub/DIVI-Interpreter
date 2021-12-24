@@ -1,2 +1,2 @@
 Lang: "python"
-Source: ["main.py", "compile.py", "render.py"]
+Source: ["main.py", "compile.py", "render.py", "main.divi"]
